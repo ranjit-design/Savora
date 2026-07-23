@@ -178,9 +178,9 @@ export default function ArtMenuSection() {
                   <span className="price-label" style={{ color: 'var(--terracotta)', fontSize: '0.85rem', letterSpacing: '0.1em', fontWeight: 'bold', marginTop: '8px' }}>PER PERSON</span>
                 </div>
                 
-                <Link to="/reservations" className="btn btn-primary art-reserve-btn" style={{ padding: '1rem 2.5rem', backgroundColor: '#3D2522' }}>
+                <a href="#reservations" className="btn btn-primary art-reserve-btn" style={{ padding: '1rem 2.5rem', backgroundColor: '#3D2522' }}>
                   RESERVE A TABLE
-                </Link>
+                </a>
               </div>
             </div>
 

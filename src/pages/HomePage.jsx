@@ -35,9 +35,9 @@ export default function HomePage() {
             </p>
             
             <div className="hero-actions">
-              <Link to="/reservations" className="btn btn-primary">
+              <a href="#reservations" className="btn btn-primary">
                 Reserve A Table
-              </Link>
+              </a>
               <Link to="/menu" className="btn btn-outline">
                 Explore The Menu
               </Link>

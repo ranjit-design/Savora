@@ -7,6 +7,7 @@ import ExperiencesPage from './pages/ExperiencesPage';
 import ReservationsPage from './pages/ReservationsPage';
 import StoryPage from './pages/StoryPage';
 import ContactPage from './pages/ContactPage';
+import LoginPage from './pages/LoginPage';
 import ScrollToTop from './components/ui/ScrollToTop';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/reservations" element={<ReservationsPage />} />
           <Route path="/story" element={<StoryPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </main>
       <Footer />
