@@ -37,7 +37,7 @@ export default function ExperiencesSection() {
           
           {/* Top right floating background image */}
           <div className="hero-shape-experiences fade-in">
-            <img src="/images/private-dining.png" alt="Saffron Muse Interior" />
+            <img src="/images/private-dining.webp" alt="Saffron Muse Interior" />
           </div>
         </div>
 
@@ -47,7 +47,7 @@ export default function ExperiencesSection() {
           {/* Pillar 1 */}
           <div className="art-dish-card">
             <div className="art-dish-image-wrapper shape-arch-1">
-              <img src="/images/private-dining.png" alt="Private Dining" style={{ borderRadius: '110px 110px 8px 8px' }} />
+              <img src="/images/private-dining.webp" alt="Private Dining" style={{ borderRadius: '110px 110px 8px 8px' }} />
             </div>
             <div className="art-dish-icon" style={{ backgroundColor: '#4A2B4D' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
@@ -64,7 +64,7 @@ export default function ExperiencesSection() {
           {/* Pillar 2 */}
           <div className="art-dish-card" style={{ marginTop: '30px' }}>
             <div className="art-dish-image-wrapper shape-oval">
-              <img src="/images/chefs-tasting.png" alt="Chef's Table" style={{ borderRadius: '110px' }} />
+              <img src="/images/chefs-tasting.webp" alt="Chef's Table" style={{ borderRadius: '110px' }} />
             </div>
             <div className="art-dish-icon icon-terracotta">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
@@ -81,7 +81,7 @@ export default function ExperiencesSection() {
           {/* Pillar 3 */}
           <div className="art-dish-card" style={{ marginTop: '10px' }}>
             <div className="art-dish-image-wrapper shape-arch-1">
-              <img src="/images/restaurant-story.png" alt="Celebrations" style={{ borderRadius: '110px 110px 8px 8px' }} />
+              <img src="/images/restaurant-story.webp" alt="Celebrations" style={{ borderRadius: '110px 110px 8px 8px' }} />
             </div>
             <div className="art-dish-icon icon-olive">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -98,7 +98,7 @@ export default function ExperiencesSection() {
           {/* Pillar 4 */}
           <div className="art-dish-card" style={{ marginTop: '40px' }}>
             <div className="art-dish-image-wrapper shape-4">
-              <img src="/images/hero-dish.png" alt="Wine Pairing" />
+              <img src="/images/hero-dish.webp" alt="Wine Pairing" />
             </div>
             <div className="art-dish-icon icon-gold">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M8 21h8"/><path d="M12 15v6"/><path d="M7 3h10l-1.5 5.5c-1 3.5-3.5 6.5-3.5 6.5s-2.5-3-3.5-6.5L7 3z"/></svg>
@@ -181,19 +181,19 @@ export default function ExperiencesSection() {
             <div className="grid-cols-3" style={{ gap: 'var(--space-lg)' }}>
               <div style={{ textAlign: 'center', flex: 1 }}>
                 <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: 'clamp(260px, 40vw, 320px)', marginBottom: '15px', borderRadius: '12px', overflow: 'hidden' }}>
-                  <img src="/images/seared-scallops.jpg" alt="Locally Sourced" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/images/seared-scallops.webp" alt="Locally Sourced" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 'bold', color: 'var(--deep-brown)', opacity: 0.8 }}>LOCALLY SOURCED<br/>INGREDIENTS</p>
               </div>
               <div style={{ textAlign: 'center', flex: 1 }}>
                 <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: 'clamp(260px, 40vw, 320px)', marginBottom: '15px', borderRadius: '12px', overflow: 'hidden' }}>
-                  <img src="/images/lamb-ragout.jpg" alt="Sustainable" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/images/lamb-ragout.webp" alt="Sustainable" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 'bold', color: 'var(--deep-brown)', opacity: 0.8 }}>SUSTAINABLE<br/>& CONSCIOUS</p>
               </div>
               <div style={{ textAlign: 'center', flex: 1 }}>
                 <div style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: 'clamp(260px, 40vw, 320px)', marginBottom: '15px', borderRadius: '12px', overflow: 'hidden' }}>
-                  <img src="/images/rose-fig.jpg" alt="Made With Passion" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src="/images/rose-fig.webp" alt="Made With Passion" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 'bold', color: 'var(--deep-brown)', opacity: 0.8 }}>MADE WITH<br/>PASSION</p>
               </div>

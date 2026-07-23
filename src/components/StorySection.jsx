@@ -13,7 +13,7 @@ export default function StorySection() {
     >
       <div style={{
         position: 'relative',
-        backgroundImage: 'url(/images/hero-restaurant.png)',
+        backgroundImage: 'url(/images/hero-restaurant.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -50,10 +50,10 @@ export default function StorySection() {
             {/* Two Images Replacing Testimonials */}
             <div className="grid-cols-2" style={{ gap: 'var(--space-2xl)', marginTop: 'var(--space-2xl)' }}>
               <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', height: '400px' }}>
-                <img src="/images/rose-fig.jpg" alt="Savora Signature Dish" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/images/rose-fig.webp" alt="Savora Signature Dish" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', height: '400px', transform: 'translateY(40px)' }}>
-                <img src="/images/seared-scallops.jpg" alt="Culinary Artistry" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/images/seared-scallops.webp" alt="Culinary Artistry" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </div>
           </div>
@@ -75,18 +75,18 @@ export default function StorySection() {
           animation: 'marquee 25s linear infinite'
         }}>
           {/* First set of images */}
-          <img src="/images/saffron-burreta.jpg" alt="Gallery 1" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/private-dining.png" alt="Gallery 2" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/chefs-tasting.png" alt="Gallery 3" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/hero-restaurant.png" alt="Gallery 4" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/lamb-ragout.jpg" alt="Gallery 5" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/saffron-burreta.webp" alt="Gallery 1" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/private-dining.webp" alt="Gallery 2" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/chefs-tasting.webp" alt="Gallery 3" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/hero-restaurant.webp" alt="Gallery 4" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/lamb-ragout.webp" alt="Gallery 5" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
           
           {/* Duplicate set for seamless looping */}
-          <img src="/images/saffron-burreta.jpg" alt="Gallery 1" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/private-dining.png" alt="Gallery 2" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/chefs-tasting.png" alt="Gallery 3" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/hero-restaurant.png" alt="Gallery 4" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/lamb-ragout.jpg" alt="Gallery 5" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/saffron-burreta.webp" alt="Gallery 1" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/private-dining.webp" alt="Gallery 2" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/chefs-tasting.webp" alt="Gallery 3" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/hero-restaurant.webp" alt="Gallery 4" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/lamb-ragout.webp" alt="Gallery 5" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
         </div>
       </div>
 

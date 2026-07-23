@@ -36,7 +36,7 @@ export default function ArtMenuSection() {
           </div>
           
           <div className="hero-shape-menu fade-in">
-            <img src="/images/hero-restaurant.png" alt="Restaurant Interior" />
+            <img src="/images/hero-restaurant.webp" alt="Restaurant Interior" />
           </div>
         </div>
 
@@ -46,7 +46,7 @@ export default function ArtMenuSection() {
           {/* Dish 1 */}
           <div className="art-dish-card">
             <div className="art-dish-image-wrapper shape-1">
-              <img src="/images/saffron-burreta.jpg" alt="Saffron Burreta" />
+              <img src="/images/saffron-burreta.webp" alt="Saffron Burreta" />
             </div>
             <div className="art-dish-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
@@ -63,7 +63,7 @@ export default function ArtMenuSection() {
           {/* Dish 2 */}
           <div className="art-dish-card" style={{ marginTop: '40px' }}>
             <div className="art-dish-image-wrapper shape-2">
-              <img src="/images/seared-scallops.jpg" alt="Seared Scallops" />
+              <img src="/images/seared-scallops.webp" alt="Seared Scallops" />
             </div>
             <div className="art-dish-icon icon-terracotta">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5h-13L12 6.5zM12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
@@ -80,7 +80,7 @@ export default function ArtMenuSection() {
           {/* Dish 3 */}
           <div className="art-dish-card" style={{ marginTop: '20px' }}>
             <div className="art-dish-image-wrapper shape-3">
-              <img src="/images/lamb-ragout.jpg" alt="Lamb Ragout" />
+              <img src="/images/lamb-ragout.webp" alt="Lamb Ragout" />
             </div>
             <div className="art-dish-icon icon-purple">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -97,7 +97,7 @@ export default function ArtMenuSection() {
           {/* Dish 4 */}
           <div className="art-dish-card" style={{ marginTop: '60px' }}>
             <div className="art-dish-image-wrapper shape-4">
-              <img src="/images/rose-fig.jpg" alt="Rose & Fig Delice" />
+              <img src="/images/rose-fig.webp" alt="Rose & Fig Delice" />
             </div>
             <div className="art-dish-icon icon-gold">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -116,7 +116,7 @@ export default function ArtMenuSection() {
 
       {/* Bottom Banner Full Width */}
       <div style={{
-        backgroundImage: 'url(/images/hero-restaurant.png)',
+        backgroundImage: 'url(/images/hero-restaurant.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -160,7 +160,7 @@ export default function ArtMenuSection() {
           {/* Right Column Content */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2xl)' }}>
             
-            <img src="/images/rose-fig.jpg" alt="Chef's Tasting Menu" style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '24px', boxShadow: 'var(--shadow-lg)' }} />
+            <img src="/images/rose-fig.webp" alt="Chef's Tasting Menu" style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '24px', boxShadow: 'var(--shadow-lg)' }} />
             
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-md)' }}>

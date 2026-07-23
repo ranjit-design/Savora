@@ -46,10 +46,10 @@ export default function HomePage() {
           
           <div className="hero-visual fade-in">
             <div className="hero-image-main">
-              <img src="/images/hero-restaurant.png" alt="Savora One dining room" />
+              <img src="/images/hero-restaurant.webp" alt="Savora One dining room" />
             </div>
             <div className="hero-dish-overlay slide-in-left">
-              <img src="/images/hero-dish.png" alt="Signature plated dish" />
+              <img src="/images/hero-dish.webp" alt="Signature plated dish" />
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@ export default function HomePage() {
               <ChefHat />
             </div>
             <div className="feature-card-image">
-              <img src="/images/chefs-tasting.png" alt="Chef's Tasting Experience" />
+              <img src="/images/chefs-tasting.webp" alt="Chef's Tasting Experience" />
             </div>
             <div className="feature-card-content">
               <h3 className="feature-card-title">Chef's Tasting</h3>
@@ -85,7 +85,7 @@ export default function HomePage() {
               <Leaf />
             </div>
             <div className="feature-card-image">
-              <img src="/images/seasonal-menu.png" alt="Seasonal Menu" />
+              <img src="/images/seasonal-menu.webp" alt="Seasonal Menu" />
             </div>
             <div className="feature-card-content">
               <h3 className="feature-card-title">Seasonal Menu</h3>
@@ -105,7 +105,7 @@ export default function HomePage() {
               <Glasses />
             </div>
             <div className="feature-card-image">
-              <img src="/images/private-dining.png" alt="Private Dining Room" />
+              <img src="/images/private-dining.webp" alt="Private Dining Room" />
             </div>
             <div className="feature-card-content">
               <h3 className="feature-card-title">Private Dining</h3>
