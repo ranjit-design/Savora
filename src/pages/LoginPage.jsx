@@ -1,19 +1,124 @@
 import React, { useState } from 'react';
-import { User, Lock, EyeOff, Eye, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { User, Lock, EyeOff, Eye, Mail, Briefcase } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { api } from '../api';
 import './LoginPage.css';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
+  
+  // Login state
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  
+  // Signup state
+  const [signupName, setSignupName] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [signupConfirm, setSignupConfirm] = useState('');
+  const [signupRole, setSignupRole] = useState('CUSTOMER');
+
+  const [errorMsg, setErrorMsg] = useState('');
+  
+  const { login, redirectAfterLogin, setRedirectAfterLogin } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrorMsg('');
+    if (!loginEmail || !loginPassword) return;
+    
+    try {
+      const user = await login(loginEmail, loginPassword);
+      
+      let defaultRedirect = '/';
+      if (user.role === 'ADMIN') defaultRedirect = '/admin/dashboard';
+      else if (user.role === 'RESTAURANT_OWNER') defaultRedirect = '/owner/dashboard';
+      else if (user.role === 'CUSTOMER') defaultRedirect = '/customer/dashboard';
+
+      if (user.role === 'CUSTOMER') {
+        const pendingEnquiryStr = localStorage.getItem('pending_enquiry');
+        if (pendingEnquiryStr) {
+          try {
+            const pendingEnquiry = JSON.parse(pendingEnquiryStr);
+            await api.submitInquiry(pendingEnquiry, user.accessToken);
+            localStorage.removeItem('pending_enquiry');
+            navigate('/customer/dashboard');
+            return;
+          } catch (err) {
+            console.error("Failed to submit pending enquiry:", err);
+          }
+        }
+      }
+
+      if (redirectAfterLogin) {
+        navigate(redirectAfterLogin);
+        setRedirectAfterLogin(null);
+      } else {
+        navigate(defaultRedirect);
+      }
+    } catch (err) {
+      setErrorMsg('Invalid credentials. Please try again.');
+    }
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    setErrorMsg('');
+    if (signupPassword !== signupConfirm) {
+      setErrorMsg('Passwords do not match');
+      return;
+    }
+
+    try {
+      // Split name into first and last for django
+      const nameParts = signupName.split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+      
+      await api.register({
+        email: signupEmail,
+        username: signupEmail.split('@')[0],
+        password: signupPassword,
+        first_name: firstName,
+        last_name: lastName,
+        role: signupRole
+      });
+      
+      // Auto-login after signup
+      const user = await login(signupEmail, signupPassword);
+      
+      let defaultRedirect = '/';
+      if (user.role === 'ADMIN') defaultRedirect = '/admin/dashboard';
+      else if (user.role === 'RESTAURANT_OWNER') defaultRedirect = '/owner/dashboard';
+      else if (user.role === 'CUSTOMER') defaultRedirect = '/customer/dashboard';
+
+      if (user.role === 'CUSTOMER') {
+        const pendingEnquiryStr = localStorage.getItem('pending_enquiry');
+        if (pendingEnquiryStr) {
+          try {
+            const pendingEnquiry = JSON.parse(pendingEnquiryStr);
+            await api.submitInquiry(pendingEnquiry, user.accessToken);
+            localStorage.removeItem('pending_enquiry');
+            navigate('/customer/dashboard');
+            return;
+          } catch (err) {
+            console.error("Failed to submit pending enquiry:", err);
+          }
+        }
+      }
+
+      navigate(defaultRedirect);
+    } catch (err) {
+      setErrorMsg(err.message || 'Signup failed');
+    }
+  };
 
   return (
     <div className="login-page-wrapper">
       <div className="login-container">
-        {/* Avatar/Illustration */}
-        <div className="login-illustration-side">
-          <img src="/images/login-avatar.webp" alt="3D Login Illustration" />
-        </div>
 
         {/* Form Card with 3D Flip */}
         <div className="login-card-container">
@@ -26,12 +131,19 @@ export default function LoginPage() {
                 <p>Login to continue</p>
               </div>
 
-              <form className="login-form" onSubmit={(e) => e.preventDefault()}>
+              <form className="login-form" onSubmit={handleLogin}>
+                {errorMsg && !isSignUp && <div className="error-message" style={{color:'red', fontSize:'14px', marginBottom:'10px'}}>{errorMsg}</div>}
                 <div className="input-group">
                   <div className="input-icon">
                     <User size={18} />
                   </div>
-                  <input type="text" placeholder="Username / Email" />
+                  <input 
+                    type="email" 
+                    placeholder="Email Address" 
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                    required
+                  />
                 </div>
 
                 <div className="input-group">
@@ -41,6 +153,9 @@ export default function LoginPage() {
                   <input 
                     type={showPassword ? "text" : "password"} 
                     placeholder="Password" 
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                    required
                   />
                   <div 
                     className="input-action" 
@@ -86,19 +201,20 @@ export default function LoginPage() {
                 <p>Join us today</p>
               </div>
 
-              <form className="login-form" onSubmit={(e) => e.preventDefault()}>
+              <form className="login-form" onSubmit={handleSignUp}>
+                {errorMsg && isSignUp && <div className="error-message" style={{color:'red', fontSize:'14px', marginBottom:'10px'}}>{errorMsg}</div>}
                 <div className="input-group">
                   <div className="input-icon">
                     <User size={18} />
                   </div>
-                  <input type="text" placeholder="Full Name" />
+                  <input type="text" placeholder="Full Name" value={signupName} onChange={e => setSignupName(e.target.value)} required />
                 </div>
                 
                 <div className="input-group">
                   <div className="input-icon">
                     <Mail size={18} />
                   </div>
-                  <input type="email" placeholder="Email Address" />
+                  <input type="email" placeholder="Email Address" value={signupEmail} onChange={e => setSignupEmail(e.target.value)} required />
                 </div>
 
                 <div className="input-group">
@@ -108,6 +224,9 @@ export default function LoginPage() {
                   <input 
                     type={showPassword ? "text" : "password"} 
                     placeholder="Password" 
+                    value={signupPassword}
+                    onChange={e => setSignupPassword(e.target.value)}
+                    required
                   />
                   <div 
                     className="input-action" 
@@ -124,6 +243,9 @@ export default function LoginPage() {
                   <input 
                     type={showPassword ? "text" : "password"} 
                     placeholder="Confirm Password" 
+                    value={signupConfirm}
+                    onChange={e => setSignupConfirm(e.target.value)}
+                    required
                   />
                   <div 
                     className="input-action" 
@@ -131,6 +253,20 @@ export default function LoginPage() {
                   >
                     {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
                   </div>
+                </div>
+                
+                <div className="input-group role-selector">
+                  <div className="input-icon">
+                    <Briefcase size={18} />
+                  </div>
+                  <select 
+                    value={signupRole}
+                    onChange={e => setSignupRole(e.target.value)}
+                    style={{width: '100%', padding: '12px 12px 12px 45px', border: '1px solid #ddd', borderRadius: '8px', background: '#f9f9f9', outline: 'none', color: '#555'}}
+                  >
+                    <option value="CUSTOMER">I am a Customer</option>
+                    <option value="RESTAURANT_OWNER">I am a Restaurant Owner</option>
+                  </select>
                 </div>
 
                 <button type="submit" className="login-btn">

@@ -111,16 +111,16 @@ export default function ReservationSection() {
           height: 'fit-content'
         }}>
           <div className="shape-arch-1" style={{ backgroundColor: 'transparent', padding: 0 }}>
-            <img src="/images/private-dining.webp" alt="Texture 1" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '120px 120px 8px 8px' }} />
+            <img src="/images/private-dining.webp" alt="Texture 1" style={{ width: '100%', height: 'clamp(200px, 30vw, 300px)', objectFit: 'cover', borderRadius: '120px 120px 8px 8px' }} />
           </div>
           <div className="shape-arch-1" style={{ backgroundColor: 'transparent', padding: 0, marginTop: '40px' }}>
-            <img src="/images/chefs-tasting.webp" alt="Texture 2" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '120px 120px 8px 8px' }} />
+            <img src="/images/chefs-tasting.webp" alt="Texture 2" style={{ width: '100%', height: 'clamp(200px, 30vw, 300px)', objectFit: 'cover', borderRadius: '120px 120px 8px 8px' }} />
           </div>
           <div className="shape-arch-1" style={{ backgroundColor: 'transparent', padding: 0 }}>
-            <img src="/images/hero-dish.webp" alt="Texture 3" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '120px 120px 8px 8px' }} />
+            <img src="/images/hero-dish.webp" alt="Texture 3" style={{ width: '100%', height: 'clamp(200px, 30vw, 300px)', objectFit: 'cover', borderRadius: '120px 120px 8px 8px' }} />
           </div>
           <div className="shape-arch-1" style={{ backgroundColor: 'transparent', padding: 0, marginTop: '40px' }}>
-            <img src="/images/saffron-burreta.webp" alt="Texture 4" style={{ width: '100%', height: '300px', objectFit: 'cover', borderRadius: '120px 120px 8px 8px' }} />
+            <img src="/images/saffron-burreta.webp" alt="Texture 4" style={{ width: '100%', height: 'clamp(200px, 30vw, 300px)', objectFit: 'cover', borderRadius: '120px 120px 8px 8px' }} />
           </div>
         </div>
 

@@ -7,6 +7,7 @@ export default function StorySection() {
 
   return (
     <section 
+      id="story"
       ref={sectionRef}
       className="story-section" 
       style={{ position: 'relative', backgroundColor: 'var(--cream)', paddingTop: 'var(--space-2xl)', paddingBottom: '0' }}
@@ -49,10 +50,10 @@ export default function StorySection() {
 
             {/* Two Images Replacing Testimonials */}
             <div className="grid-cols-2" style={{ gap: 'var(--space-2xl)', marginTop: 'var(--space-2xl)' }}>
-              <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', height: '400px' }}>
+              <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', height: 'clamp(250px, 40vw, 400px)' }}>
                 <img src="/images/rose-fig.webp" alt="Savora Signature Dish" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', height: '400px', transform: 'translateY(40px)' }}>
+              <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', height: 'clamp(250px, 40vw, 400px)', transform: 'translateY(40px)' }}>
                 <img src="/images/seared-scallops.webp" alt="Culinary Artistry" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </div>
@@ -75,25 +76,27 @@ export default function StorySection() {
           animation: 'marquee 25s linear infinite'
         }}>
           {/* First set of images */}
-          <img src="/images/saffron-burreta.webp" alt="Gallery 1" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/private-dining.webp" alt="Gallery 2" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/chefs-tasting.webp" alt="Gallery 3" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/hero-restaurant.webp" alt="Gallery 4" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/lamb-ragout.webp" alt="Gallery 5" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/saffron-burreta.webp" alt="Gallery 1" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/private-dining.webp" alt="Gallery 2" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/chefs-tasting.webp" alt="Gallery 3" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/hero-restaurant.webp" alt="Gallery 4" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/lamb-ragout.webp" alt="Gallery 5" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
           
           {/* Duplicate set for seamless looping */}
-          <img src="/images/saffron-burreta.webp" alt="Gallery 1" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/private-dining.webp" alt="Gallery 2" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/chefs-tasting.webp" alt="Gallery 3" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/hero-restaurant.webp" alt="Gallery 4" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
-          <img src="/images/lamb-ragout.webp" alt="Gallery 5" style={{ flex: '0 0 auto', width: '35vw', minWidth: '450px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/saffron-burreta.webp" alt="Gallery 1" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/private-dining.webp" alt="Gallery 2" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/chefs-tasting.webp" alt="Gallery 3" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/hero-restaurant.webp" alt="Gallery 4" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
+          <img src="/images/lamb-ragout.webp" alt="Gallery 5" style={{ flex: '0 0 auto', width: '35vw', minWidth: '280px', height: '350px', objectFit: 'cover', margin: 0, padding: 0 }} />
         </div>
       </div>
 
       {/* From Our Journal */}
       <div className="art-menu-container" style={{ padding: 'var(--space-4xl) 0 var(--space-xl) 0' }}>
         <div className="fade-in-up" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-md)', marginBottom: 'var(--space-2xl)' }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', color: 'var(--deep-brown)', fontWeight: 'normal' }}>From Our Journal</h3>
+          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', color: 'var(--deep-brown)', fontWeight: 'normal' }}>
+            From Our <span style={{ color: 'var(--terracotta)', fontStyle: 'italic' }}>Journal</span>
+          </h3>
           <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 6C5 1 9 1 13 6C17 11 21 11 25 6C29 1 33 1 37 6" stroke="var(--olive-green)" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>

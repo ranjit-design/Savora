@@ -7,6 +7,7 @@ export default function ArtMenuSection() {
 
   return (
     <section 
+      id="menu"
       ref={sectionRef}
       className="art-menu-section" 
       style={{ position: 'relative', backgroundColor: 'var(--cream)', paddingTop: 'var(--space-2xl)', paddingBottom: 'var(--space-section)' }}

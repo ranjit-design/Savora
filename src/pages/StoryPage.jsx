@@ -3,7 +3,7 @@ import StorySection from '../components/StorySection';
 
 export default function StoryPage() {
   return (
-    <div className="page-wrapper" style={{ backgroundColor: 'var(--cream)', minHeight: '100vh', paddingBottom: '0' }}>
+    <div className="page-wrapper" style={{ backgroundColor: 'var(--cream)', minHeight: '100vh', paddingBottom: '0', paddingTop: 'var(--nav-height)' }}>
       <StorySection />
     </div>
   );

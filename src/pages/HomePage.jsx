@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ChefHat, Leaf, Glasses, CheckCircle2, Heart, Award } from 'lucide-react';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import ArtMenuSection from '../components/ArtMenuSection';
+import FoodMenuSection from '../components/FoodMenuSection';
 import ExperiencesSection from '../components/ExperiencesSection';
 import ReservationSection from '../components/ReservationSection';
 import StorySection from '../components/StorySection';
@@ -38,9 +39,9 @@ export default function HomePage() {
               <a href="#reservations" className="btn btn-primary">
                 Reserve A Table
               </a>
-              <Link to="/menu" className="btn btn-outline">
+              <a href="#menu" className="btn btn-outline">
                 Explore The Menu
-              </Link>
+              </a>
             </div>
           </div>
           
@@ -124,6 +125,9 @@ export default function HomePage() {
 
       {/* Art Menu Section */}
       <ArtMenuSection />
+
+      {/* Food Catalog Section */}
+      <FoodMenuSection />
 
       {/* Experiences Section */}
       <ExperiencesSection />

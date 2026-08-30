@@ -1,12 +1,69 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import useScrollAnimation from '../hooks/useScrollAnimation';
+import { useAuth } from '../context/AuthContext';
+import { api } from '../api';
 
 export default function ExperiencesSection() {
   const sectionRef = useScrollAnimation();
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
+  
+  const [restaurants, setRestaurants] = useState([]);
+  const [formData, setFormData] = useState({
+    name: '',
+    date_of_event: '',
+    number_of_guests: '',
+    message: '',
+    restaurant_id: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    api.getRestaurants()
+      .then(data => {
+        setRestaurants(data);
+        if (data.length > 0) {
+          setFormData(prev => ({ ...prev, restaurant_id: data[0].id }));
+        }
+      })
+      .catch(err => console.error('Failed to load restaurants', err));
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (!isAuthenticated) {
+      localStorage.setItem('pending_enquiry', JSON.stringify(formData));
+      navigate('/login');
+      return;
+    }
+
+    if (user.role !== 'CUSTOMER') {
+      setError('Only customers can submit inquiries. Please log out and sign in as a customer.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await api.submitInquiry(formData, user.accessToken);
+      navigate('/customer/dashboard');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section 
+      id="experiences"
       ref={sectionRef}
       className="art-menu-section" 
       style={{ position: 'relative', backgroundColor: 'var(--cream)', paddingTop: 'var(--space-2xl)', paddingBottom: '0' }}
@@ -128,7 +185,7 @@ export default function ExperiencesSection() {
             <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--deep-brown)', lineHeight: 1.1, marginBottom: 'var(--space-md)' }}>
               Let's Create<br/>
               <span style={{ fontStyle: 'italic', display: 'block' }}>Something</span>
-              <span style={{ fontStyle: 'italic', display: 'block' }}>Beautiful.</span>
+              <span style={{ fontStyle: 'italic', display: 'block', color: 'var(--terracotta)' }}>Beautiful.</span>
             </h3>
             <div className="art-menu-squiggle" style={{ marginBottom: 'var(--space-lg)' }}>
               <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,19 +198,29 @@ export default function ExperiencesSection() {
           </div>
           
           <div className="inquiry-right" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)', justifyContent: 'center' }}>
-            <div className="grid-cols-2" style={{ gap: 'var(--space-md)' }}>
-              <input type="text" placeholder="YOUR NAME" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)' }} />
-              <input type="email" placeholder="EMAIL ADDRESS" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)' }} />
-              <input type="text" placeholder="DATE OF EVENT" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)' }} />
-              <input type="text" placeholder="NUMBER OF GUESTS" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)' }} />
-            </div>
-            <div className="grid-cols-1-auto" style={{ gap: 'var(--space-md)', alignItems: 'stretch' }}>
-              <textarea placeholder="TELL US ABOUT YOUR EVENT" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)', minHeight: '100px', resize: 'none' }}></textarea>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
-                <button className="btn btn-primary" style={{ padding: '1.25rem 2.5rem', letterSpacing: '0.1em', borderRadius: '40px', backgroundColor: '#3D2522', whiteSpace: 'nowrap' }}>INQUIRE NOW</button>
-                <p style={{ fontSize: '0.7rem', color: 'var(--gray-500)', textAlign: 'center', lineHeight: 1.4 }}>We'll be in touch<br/>to curate the details.</p>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
+              {error && <div style={{ color: 'red', fontSize: '0.9rem', textAlign: 'center' }}>{error}</div>}
+              <div className="grid-cols-2" style={{ gap: 'var(--space-md)' }}>
+                <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="YOUR NAME" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)' }} />
+                <input type="text" name="date_of_event" value={formData.date_of_event} onChange={handleChange} required placeholder="DATE OF EVENT" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)' }} />
+                <input type="text" name="number_of_guests" value={formData.number_of_guests} onChange={handleChange} required placeholder="NUMBER OF GUESTS" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)' }} />
+                <select name="restaurant_id" value={formData.restaurant_id} onChange={handleChange} required className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)', gridColumn: '1 / -1' }}>
+                  <option value="" disabled style={{ color: '#000', backgroundColor: '#fff' }}>SELECT A HOTEL / RESTAURANT</option>
+                  {restaurants.map(r => (
+                    <option key={r.id} value={r.id} style={{ color: '#000', backgroundColor: '#fff' }}>{r.address || r.name}</option>
+                  ))}
+                </select>
               </div>
-            </div>
+              <div className="grid-cols-1-auto" style={{ gap: 'var(--space-md)', alignItems: 'stretch' }}>
+                <textarea name="message" value={formData.message} onChange={handleChange} required placeholder="TELL US ABOUT YOUR EVENT" className="exp-input" style={{ backgroundColor: 'transparent', border: '1px solid rgba(43, 13, 30, 0.15)', minHeight: '100px', resize: 'none' }}></textarea>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', justifyContent: 'center', alignItems: 'center' }}>
+                  <button type="submit" disabled={loading} className="btn btn-primary" style={{ padding: '1.25rem 2.5rem', letterSpacing: '0.1em', borderRadius: '40px', backgroundColor: '#3D2522', whiteSpace: 'nowrap', opacity: loading ? 0.7 : 1 }}>
+                    {loading ? 'SUBMITTING...' : 'ENQUIRE NOW'}
+                  </button>
+                  <p style={{ fontSize: '0.7rem', color: 'var(--gray-500)', textAlign: 'center', lineHeight: 1.4 }}>We'll be in touch<br/>to curate the details.</p>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -167,9 +234,9 @@ export default function ExperiencesSection() {
           <div className="grid-cols-1-2" style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: '0 var(--container-padding)', gap: 'var(--space-5xl)', alignItems: 'center' }}>
             <div className="text-center-mobile" style={{ maxWidth: '400px' }}>
               <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', fontWeight: 'normal', lineHeight: 1.1, marginBottom: 'var(--space-lg)' }}>
-                Timeless flavors.<br/>
-                Meaningful moments.<br/>
-                Made for each other.
+                <span style={{ color: 'var(--terracotta)' }}>Timeless</span> flavors.<br/>
+                <span style={{ color: 'var(--terracotta)' }}>Meaningful</span> moments.<br/>
+                <span style={{ color: 'var(--terracotta)' }}>Made</span> for each other.
               </h2>
               <div className="art-menu-squiggle">
                 <svg width="40" height="12" viewBox="0 0 40 12" fill="none" xmlns="http://www.w3.org/2000/svg">
